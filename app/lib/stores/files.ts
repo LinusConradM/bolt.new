@@ -138,8 +138,8 @@ export class FilesStore {
         case 'remove_dir': {
           this.files.setKey(sanitizedPath, undefined);
 
-          for (const [direntPath] of Object.entries(this.files)) {
-            if (direntPath.startsWith(sanitizedPath)) {
+          for (const [direntPath] of Object.entries(this.files.get())) {
+            if (direntPath.startsWith(`${sanitizedPath}/`)) {
               this.files.setKey(direntPath, undefined);
             }
           }
